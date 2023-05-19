@@ -1,16 +1,8 @@
-import { PrismaClient } from '@prisma/client'
 import fastfy from 'fastify'
+import { memoriesRoute } from './routes/memories'
 
 const app = fastfy()
-
-const prisma = new PrismaClient()
-app.get('/users', () => {
-  return prisma.user.findMany()
-})
-
-app.get('/hello', () => {
-  return 'Hello World'
-})
+app.register(memoriesRoute)
 
 app
   .listen({
