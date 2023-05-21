@@ -1,7 +1,7 @@
 node_modules
 # Keep environment variables out of version control
 .env
-.yarn-lock
+yarn-lock.json
 package-lock.json
 
 /prisma/dev.db
