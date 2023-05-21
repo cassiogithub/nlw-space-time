@@ -1,15 +1,15 @@
 import { FastifyInstance } from 'fastify'
-import { prisma } from '../lib/prisma'
 import { z } from 'zod'
+import { prisma } from '../lib/prisma'
 
 const CODE_UNAUTHORIZED = 401
 
 export async function memoriesRoute(app: FastifyInstance) {
-  app.get('/memories', async (request) => {
-    app.addHook('preHandler', async () => {
-      await request.jwtVerify()
-    })
+  app.addHook('preHandler', async (request) => {
+    await request.jwtVerify()
+  })
 
+  app.get('/memories', async (request) => {
     const memories = await prisma.memory.findMany({
       where: {
         userId: request.user.sub,
