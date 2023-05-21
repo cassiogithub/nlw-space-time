@@ -7,7 +7,9 @@ export async function GET(request: NextRequest) {
 
   const registerReponse = await api.post('/register', { code })
   const { token } = registerReponse.data
-  const redirectUrl = new URL('/', request.url)
+
+  const redirectTo = request.cookies.get('redirectTo')?.value
+  const redirectUrl = redirectTo ?? new URL('/', request.url)
 
   const [SECONDS, MINUTES, HOURS, DAYS] = [60, 60, 24, 30]
   const cookieExpiresInSeconds = SECONDS * MINUTES * HOURS * DAYS
