@@ -3,5 +3,6 @@ node_modules
 .env
 yarn-lock
 package-lock
-./prisma/dev.db
-./uploads/*
+
+/prisma/dev.db
+/uploads/*
