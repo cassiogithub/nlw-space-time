@@ -6,6 +6,8 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto'
 
+import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
 import blurBg from './src/assets/bg-blur.png'
@@ -13,6 +15,12 @@ import Stripes from './src/assets/stripes.svg'
 import LogoNlw from './src/assets/nlw-logo.svg'
 
 import { styled } from 'nativewind'
+import { useEffect } from 'react'
+
+const discovery = {
+  authorizationEndpoint: 'https://api.imgur.com/oauth2/authorize',
+  tokenEndpoint: 'https://api.imgur.com/oauth2/token',
+}
 
 export default function App() {
   const StyledStripes = styled(Stripes)
@@ -21,6 +29,31 @@ export default function App() {
     Roboto_700Bold,
     BaiJamjuree_700Bold,
   })
+
+  const [, response, signInWithGithub] = useAuthRequest(
+    {
+      clientId: '77d4784eefae93c32581',
+      redirectUri: makeRedirectUri({
+        scheme: 'nlwspacetime',
+      }),
+      // imgur requires an empty array
+      scopes: [],
+    },
+    discovery,
+  )
+
+  useEffect(() => {
+    console.log(
+      makeRedirectUri({
+        scheme: 'nlwspacetime',
+      }),
+    )
+
+    if (response?.type === 'success') {
+      const { code } = response.params
+      console.log(code)
+    }
+  }, [response])
 
   if (!hasLoadedFonts) {
     return
@@ -50,6 +83,7 @@ export default function App() {
         <TouchableOpacity
           activeOpacity={0.7}
           className="rounded-full bg-green-500 px-5 py-3"
+          onPress={() => signInWithGithub()}
         >
           <Text className="font-alt text-sm uppercase text-black">
             Cadastrar lembrança
