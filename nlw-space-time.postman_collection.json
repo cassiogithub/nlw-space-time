@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "8c079d5f-356e-436b-8694-9d66374c28d7",
+		"name": "nlw-space-time",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16703090"
+	},
+	"item": [
+		{
+			"name": "memories",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ8Ohc3NpbyBSb2RyaWd1ZXMiLCJhdmF0YXJVcmwiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNzk1NTY4MDU_dj00Iiwic3ViIjoiODdhOTdiMTgtMDJkNC00Y2QyLWFlZWYtMTdiODdhNzIyZThkIiwiaWF0IjoxNjg0Njg3OTMyLCJleHAiOjE2ODcyNzk5MzJ9.F7l888zgTxYX6miUV1j76QcVkl5p2mcIdreQjJPSKsQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3333/memories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"memories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/memories/8b2f9e85-7dde-41cd-a84c-0b3a4fff6632",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"memories",
+								"8b2f9e85-7dde-41cd-a84c-0b3a4fff6632"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Eu sou uma nova postagem\",\r\n    \"isPublic\": 0,\r\n    \"coverUrl\": \"github.com/cassiogithub.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/memories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"memories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Eu sou uma nova postagem atualizada\",\r\n    \"isPublic\": 1,\r\n    \"coverUrl\": \"github.com/cassiogithub.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/memories/2374d58d-574f-45e3-8c4b-f8bc39c66a4e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"memories",
+								"2374d58d-574f-45e3-8c4b-f8bc39c66a4e"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2374d58d-574f-45e3-8c4b-f8bc39c66a4e",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/memories/8b2f9e85-7dde-41cd-a84c-0b3a4fff6632",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"memories",
+								"8b2f9e85-7dde-41cd-a84c-0b3a4fff6632"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"ceb957c20d3c4fd244fd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
