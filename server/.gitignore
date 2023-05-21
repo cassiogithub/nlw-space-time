@@ -1,8 +1,8 @@
 node_modules
 # Keep environment variables out of version control
 .env
-yarn-lock
-package-lock
+.yarn-lock
+package-lock.json
 
 /prisma/dev.db
 /uploads/*
