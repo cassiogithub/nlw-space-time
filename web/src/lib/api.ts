@@ -1,9 +1,10 @@
+'use client'
 import axios from 'axios'
-import { cookies } from 'next/headers'
+import Cookies from 'js-cookie'
 
 export const api = axios.create({
   baseURL: 'http://localhost:3333',
   headers: {
-    Authorization: cookies().get('token')?.value,
+    Authorization: `Bearer ${Cookies.get('token')}`,
   },
 })
